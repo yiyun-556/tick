@@ -1,0 +1,7 @@
+{
+  "versionCode": 1,
+  "versionName": "1.0.0",
+  "apkUrl": "https://github.com/yiyun-556/tick/releases/download/v1.0.0/tick-v1.0.0.apk",
+  "sha256": "2cc9dd0c31c50d9b3abe5f1088bcd5ced3e5e8d18667d5fe4c3bfdfe931689a1",
+  "notes": "首个公开版本：本地记录、日历与按日期备注、通知、AI 伴侣、隐私门、液态玻璃与统一动画；支持 GitHub Releases 手动/自动更新。旧测试版 versionCode 24，公开版 versionCode 1，安装前需卸载旧版。"
+}
