@@ -1,43 +1,7 @@
-# 刻度 / Tick
-
-一个只在 Android 本地运行的克制打卡与冲动急救应用。包名 `com.tick.app`。
-
-## 技术栈
-
-- Kotlin 2.3.20 + Jetpack Compose Compiler 2.3.20
-- AGP 8.9.1 / Gradle 8.13 / JDK 17
-- `minSdk 31`，`targetSdk 35`，`compileSdk 36`
-- Miuix `0.9.0`（`miuix-ui`、`miuix-icons`）
-- Kyant Backdrop `1.0.6`（Apache-2.0，液态玻璃/镜头折射）
-- 无 Retrofit / OkHttp / Gson；AI 请求使用 `HttpURLConnection` + `org.json` + 协程 `Flow` 手写 SSE
-
-## 构建
-
-```bash
-./gradlew assembleDebug
-./gradlew assembleRelease
+刻度 · Tick把每一次稳住，都留在自己手里刻度是一个本地优先的 Android 应用：克制打卡 + 冲动急救。
+它不要求账号，不把记录上传云端，没有广告，也没有排行榜。状态稳定时，它帮你记下每一天；冲动上来时，它给你 60 秒呼吸引导，和一个可以说话的 AI 伴侣。
+下载最新版本 · 隐私政策 · GitHub 仓库
+它是什么很多记录工具只负责“记”，真正难的是冲动来的那几分钟。刻度把两件事放在同一个地方：稳定时：记下你走过了多久，哪些日子稳住了，哪些日子没稳住。冲动时：不用翻菜单，直接进入呼吸引导，或者找一个不会评判你的 AI 说话。它不把复发当失败。记录一次，只是留下一条可以回看的信息。
+你可以用它稳住计时已稳住的天、小时、分钟自动阶梯目标与当前进度本月次数、平均间隔、最长连胜打卡与记录每日稳住打卡，同一天不会重复选时打卡，补录过去某一天记录一次，可调整日期和时间选择当时的诱因：熬夜、无聊、压力大、刷短视频、情绪低落、其他写一条当时的备注日历与日期备注首页主卡单击切换「此刻的刻度 / 月历」翻月、选择年份和月份日期上显示稳住打卡 / 记录一次的圆点点开某一天，查看当天摘要给任意日期单独写备注备注只存在本地，可以随时修改或清空历史时间轴查看全部记录手动补录删除单条记录60 秒急救4-4-6 呼吸引导：吸气 4 秒、屏息 4 秒、呼气 6 秒呼吸阶段文字、倒计时和触觉反馈三组快捷求助话术急救页内直接和 AI 伴侣对话AI 伴侣（可选）OpenAI 兼容接口，SSE 流式回复多轮上下文DeepSeek / Qwen / Kimi / GLM / OpenAI / 自定义预设连接测试可自定义名字和性格API Key 使用 Android Keystore 加密不配置 Key 也能使用本地陪伴模式通知通知栏实时显示已稳住计时和今日打卡状态Android 16+ 支持系统 ProgressStyle通知栏直接“打卡”每日提醒时间可调打卡成功轻量确认重启、改时间、改时区后自动恢复提醒外观经典 HyperOS / 莫奈动态取色跟随系统 / 浅色 / 深色液态玻璃底栏玻璃 / 模糊 / 纯色三档玻璃参数可调：模糊半径、折射高度、折射强度、色散、高光渐变模糊顶栏开关和滑杆同时支持点击与拖动统一的短动画，不堆砌动效为什么是本地优先刻度没有账号系统，没有云端数据库，也没有开发者服务器。打卡、记录、备注、设置、聊天记录都只保存在你的手机API Key 使用 Android Keystore 加密不接广告 SDK、统计 SDK、推送 SDK不读取通讯录、位置、相册、麦克风或相机allowBackup=false，不参与系统云备份和设备迁移所有本地数据可以一键清空首次启动必须先完整阅读隐私政策AI 是唯一会主动联网的功能，而且只在你配置并主动使用时，直接连接你选择的服务商。更新检查默认关闭，只有你手动检查或主动开启每日检查时才会访问 GitHub。安装打开 Releases下载 tick-v1.0.0.apk允许“安装未知应用”安装后首次启动，完整阅读隐私政策要求：Android 12 及以上。升级会保留本地数据；卸载或“清空全部数据”会删除它，且没有云端副本可以恢复。更新应用内手动检查更新可选每日自动检查，默认关闭下载后校验 SHA-256、包名和应用签名交给系统安装器，由你确认安装也可以用 Obtainium 添加本仓库追踪更新更新源：https://github.com/yiyun-556/tick/releases技术栈Kotlin + Jetpack ComposeminSdk 31，targetSdk 35Miuix 组件Kyant Backdrop 液态玻璃（Apache-2.0）无 Retrofit / OkHttp / Gson本地存储 + Android KeystoreAI 使用 HttpURLConnection + 协程 Flow 手写 SSE构建bash复制./gradlew assembleRelease
 ./gradlew testDebugUnitTest
-./gradlew lintDebug
-```
-
-APK 输出：
-
-- `app/build/outputs/apk/release/app-release.apk`（推荐安装，已签名、非 debuggable）
-- `app/build/outputs/apk/debug/app-debug.apk`（调试备用）
-
-release 签名文件在 `keystore/tick-release.jks`，口令在同目录之外的 `keystore.properties`。请自行保管；若要上架应用商店，请替换为自己的正式签名。
-
-## GitHub 更新源
-
-- 仓库：https://github.com/yiyun-556/tick
-- Releases：https://github.com/yiyun-556/tick/releases
-- 应用内更新读取 `releases/latest/download/update.json`
-- Obtainium 可直接添加仓库地址追踪更新
-
-## 1.0.0 首个公开版本
-
-刻度是一个只在本地运行的克制打卡与冲动急救工具。
-它记录你稳住的每一天，也在你想破戒的那一刻给你 60 秒呼吸引导和一个能说话的 AI 伴侣。
-没有账号，没有云同步，没有广告；打卡、日历、备注和历史都只留在你的手机里。
-你可以不配置 AI，也可以随时清空全部数据。
-它不评判你，只帮你把这一刻记下来。
+./gradlew lintDebugAPK 输出：text复制app/build/outputs/apk/release/app-release.apk它不是什么刻度是自我管理与记录工具，不是医疗器械，不提供诊断、治疗、急救或心理治疗，不能替代专业帮助。AI 回复由第三方模型生成，可能错误、不完整或不适用于你的情况。如果你或他人正处于伤害自己或他人的紧急风险中，请立即联系当地急救、危机热线或可信任的人。版本当前版本：1.0.0首个公开版本。后续版本见 Releases。
